@@ -6,10 +6,9 @@ import {
   View,
   Alert,
 } from "react-native";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Input, Image, Button } from "react-native-elements";
 import { Icon } from "react-native-elements";
-import { storeData, retrieveData } from "../hooks/localStorage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { StatusBar } from "expo-status-bar";
@@ -18,16 +17,25 @@ const LoginScreen = ({ navigation }) => {
   const baseUrl = "https://pos-api-v1-production.up.railway.app/api";
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [user, setUser] = useState({});
 
-  // LOADNING SCREEN
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [user, setUser] = useState(0);
+  useEffect(() => {
+    getUser();
+    // if (user.id) {
+    //   navigation.replace("Home");
+    // }
+  }, []);
+  console.log(user);
+  const getUser = async () => {
+    console.log("getUser");
+    // const store = await AsyncStorage.getAllKeys();
+    const userData = await AsyncStorage.getItem("user");
+    setUser(JSON.parse(userData));
+  };
 
   const submitLogin = async () => {
-    // console.log(email, pass);
+    console.log(email, pass);
     // navigation.replace("Home");
-    setIsLoading(true);
 
     // AXIOS LOGIN REQUEST
     axios
@@ -38,7 +46,6 @@ const LoginScreen = ({ navigation }) => {
       .then(async (response) => {
         console.log(response.status);
         if (response.status === 200) {
-          setIsLoading(false);
           console.log(response.data.access_token);
 
           try {
@@ -53,20 +60,12 @@ const LoginScreen = ({ navigation }) => {
             console.log("Login Success");
             navigation.replace("Home");
           }
-
-          // await AsyncStorage.setItem("USER", "login");
-          // showAlert();
-          // setTimeout(() => {
-          // }, 2000);
         }
         const store = await AsyncStorage.getAllKeys();
         const token = await AsyncStorage.getItem("user");
         console.log(store, token);
       })
       .catch(async (error) => {
-        // await AsyncStorage.setItem("USER", "login");
-        // // console.log(response.status);
-        // navigation.replace("Home");
         console.log("error", error);
       });
   };

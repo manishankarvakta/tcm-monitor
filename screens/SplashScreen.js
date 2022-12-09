@@ -11,7 +11,7 @@ import { Image } from "react-native-elements";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SplashScreen = ({ navigation }) => {
-  const [access_token, setAccess_token] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   const clearStorage = async () => {
     await AsyncStorage.clear();
@@ -19,18 +19,21 @@ const SplashScreen = ({ navigation }) => {
 
   const checkLogin = async () => {
     const token = await AsyncStorage.getItem("token");
-    if (access_token !== null) {
-      navigation.replace("Login");
+    if (token) {
+      setIsLoggedIn(true);
     } else {
-      navigation.replace("Home");
+      setIsLoggedIn(false);
     }
-    setAccess_token(token);
   };
-
+  console.log("isLogin", isLoggedIn);
   useEffect(() => {
+    checkLogin();
     setTimeout(() => {
-      clearStorage();
-      checkLogin();
+      if (isLoggedIn === false) {
+        navigation.replace("Login");
+      } else {
+        navigation.replace("Home");
+      }
     }, 3000);
   }, []);
   return (
@@ -62,5 +65,3 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
   },
 });
-
-//
