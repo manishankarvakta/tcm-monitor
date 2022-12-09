@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "tcm-monitor",
+    "name": "TCM",
     "slug": "tcm-monitor",
+    "description": "This app for only monitoring TCM POS sales",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,16 +19,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.manishankarvakta.tcmmonitor"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.manishankarvakta.tcmmonitor"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6eee0a27-f675-40ff-8d94-559bf1aa1c6d"
+      }
+    },
+    "owner": "manishankarvakta"
   }
 }

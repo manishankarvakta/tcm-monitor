@@ -63,7 +63,7 @@ const LoginScreen = ({ navigation }) => {
         }
         const store = await AsyncStorage.getAllKeys();
         const token = await AsyncStorage.getItem("user");
-        console.log(store, token);
+        // console.log(store, token);
       })
       .catch(async (error) => {
         console.log("error", error);

@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
   },
   item: {
     marginTop: 20,
+    marginBottom: 10,
     flexDirection: "row",
   },
   icon: {

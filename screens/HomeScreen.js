@@ -44,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
       await axios
         .get(`${baseUrl}/sale/footfall/${startDate}/${endDate}`)
         .then((res) => {
-          setFootFall(res?.data[0].footfall);
+          setFootFall(res?.data[0]?.footfall ? res?.data[0]?.footfall : 0);
         });
     } catch (err) {
       console.log(err);
@@ -64,7 +64,7 @@ const HomeScreen = ({ navigation }) => {
     setUser(JSON.parse(userData));
   };
 
-  console.log("user", user);
+  // console.log("user", user);
   // console.log("sale", saleTotal);
   // console.log("footFall", footFall);
   const logOut = async () => {
@@ -109,10 +109,20 @@ const HomeScreen = ({ navigation }) => {
               marginRight: 20,
               flexDirection: "row",
               justifyContent: "flex-end",
-              width: 80,
+              width: 100,
               marginRight: 10,
             }}
           >
+            <Text
+              style={{
+                marginRight: 10,
+                fontWeight: "600",
+                color: "#fff",
+                fontSize: 16,
+              }}
+            >
+              {format(new Date(), "MM-dd-yyyy")}
+            </Text>
             <TouchableOpacity activeOpacity={0.5} onPress={() => logOut()}>
               <Icon name="poweroff" type="ant-design" size={20} />
             </TouchableOpacity>
@@ -279,7 +289,7 @@ const HomeScreen = ({ navigation }) => {
               }}
             >
               <Text style={{ fontSize: 40, fontWeight: "600", color: "black" }}>
-                {saleTotal.total / footFall > 0
+                {saleTotal?.total / footFall > 0
                   ? (saleTotal.total / footFall)?.toFixed(2)
                   : 0}
               </Text>
