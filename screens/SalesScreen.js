@@ -59,7 +59,13 @@ const SalesScreen = ({ navigation }) => {
       <ScrollView>
         {sale?.length > 0 ? (
           sale?.map((item) => (
-            <SaleItem item={item} key={item._id} navigation={navigation} />
+            <SaleItem
+              item={item}
+              key={item._id}
+              onPress={() => {
+                navigation.navigate("Invoice");
+              }}
+            />
           ))
         ) : (
           <Loading />
