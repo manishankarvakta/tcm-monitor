@@ -4,12 +4,13 @@ import {
   StyleSheet,
   Text,
   View,
+  Alert,
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { Input, Image, Button } from "react-native-elements";
 import { Icon } from "react-native-elements";
 import { storeData, retrieveData } from "../hooks/localStorage";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { StatusBar } from "expo-status-bar";
 
@@ -22,10 +23,9 @@ const LoginScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [user, setUser] = useState(0);
-  const [access_token, setAccess_token] = useState(0);
 
   const submitLogin = async () => {
-    console.log(email, pass);
+    // console.log(email, pass);
     // navigation.replace("Home");
     setIsLoading(true);
 
@@ -39,13 +39,34 @@ const LoginScreen = ({ navigation }) => {
         console.log(response.status);
         if (response.status === 200) {
           setIsLoading(false);
-          console.log(response.data);
-          storeData("user", JSON.stringify(response.data.user));
-          navigation.replace("Home");
+          console.log(response.data.access_token);
+
+          try {
+            await AsyncStorage.setItem("token", response.data.access_token);
+            await AsyncStorage.setItem(
+              "user",
+              JSON.stringify(response.data.user)
+            );
+          } catch (error) {
+            console.log("storeError:", error);
+          } finally {
+            console.log("Login Success");
+            navigation.replace("Home");
+          }
+
+          // await AsyncStorage.setItem("USER", "login");
+          // showAlert();
+          // setTimeout(() => {
+          // }, 2000);
         }
+        const store = await AsyncStorage.getAllKeys();
+        const token = await AsyncStorage.getItem("user");
+        console.log(store, token);
       })
-      .catch(function (error) {
-        // console.log(response.status);
+      .catch(async (error) => {
+        // await AsyncStorage.setItem("USER", "login");
+        // // console.log(response.status);
+        // navigation.replace("Home");
         console.log("error", error);
       });
   };

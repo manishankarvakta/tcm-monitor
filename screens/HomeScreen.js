@@ -1,41 +1,34 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Button } from "react-native-elements";
-const baseUrl = "https://pos-api-v1-production.up.railway.app/api";
+import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { StatusBar } from "expo-status-bar";
 
-const HomeScreen = async ({ navigation }) => {
-  const [user, setUser] = useState();
-
-  useLayoutEffect(() => {}, [navigation]);
-
-  // console.log(user);
-
-  // console.log(user);
-
-  const logOut = () => {
-    // storeData("@user", "");
-    // storeData("@access_token", "");
-    navigation.replace("Login");
+const HomeScreen = ({ navigation }) => {
+  const [user, setUser] = useState("");
+  const getUser = async () => {
+    console.log("getUser");
+    const store = await AsyncStorage.getAllKeys();
+    const userData = await AsyncStorage.getItem("user");
+    // console.log(store == null ? "" : store, userData == null ? "" : userData);
+    setUser(JSON.parse(userData));
   };
-
-  // console.log(user);
+  useEffect(() => {
+    getUser();
+  }, []);
   return (
-    <View style={styles.container}>
-      <StatusBar style="light" />
-      <Button title="Log Out" onPress={() => getUser()} />
-      <Text>HomeScreen</Text>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <Text>Welcome</Text>
+      <Text style={{ fontSize: 30, fontWeight: "600" }}>{user?.name}</Text>
     </View>
   );
 };
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});

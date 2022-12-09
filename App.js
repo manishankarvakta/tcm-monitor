@@ -5,6 +5,8 @@ import LoginScreen from "./screens/LoginScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./screens/HomeScreen";
 import SplashScreen from "./screens/SplashScreen";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 
 const Stack = createStackNavigator();
 
@@ -20,6 +22,21 @@ const globalOptions = {
 };
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const checkLogin = async () => {
+    const token = await AsyncStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  };
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={globalOptions}>

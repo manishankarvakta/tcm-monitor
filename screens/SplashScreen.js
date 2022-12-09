@@ -8,11 +8,29 @@ import {
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { Image } from "react-native-elements";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SplashScreen = ({ navigation }) => {
+  const [access_token, setAccess_token] = useState(0);
+
+  const clearStorage = async () => {
+    await AsyncStorage.clear();
+  };
+
+  const checkLogin = async () => {
+    const token = await AsyncStorage.getItem("token");
+    if (access_token !== null) {
+      navigation.replace("Login");
+    } else {
+      navigation.replace("Home");
+    }
+    setAccess_token(token);
+  };
+
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace("Login");
+      clearStorage();
+      checkLogin();
     }, 3000);
   }, []);
   return (
@@ -34,15 +52,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    height: 150,
-    width: 150,
-    // marginBottom: 20,
+    height: 130,
+    width: 130,
   },
   text: {
-    // width: "100%",
     fontSize: 25,
     color: "red",
-    fontWeight: "500",
+    fontWeight: "600",
     fontFamily: "Times New Roman",
   },
 });
+
+//
