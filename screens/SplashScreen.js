@@ -19,22 +19,18 @@ const SplashScreen = ({ navigation }) => {
 
   const checkLogin = async () => {
     const token = await AsyncStorage.getItem("token");
-    if (token) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  };
-  console.log("isLogin", isLoggedIn);
-  useEffect(() => {
-    checkLogin();
+    console.log(token);
     setTimeout(() => {
-      if (isLoggedIn === false) {
+      if (token == null) {
         navigation.replace("Login");
       } else {
         navigation.replace("Home");
       }
     }, 3000);
+  };
+  console.log("isLogin", isLoggedIn);
+  useEffect(() => {
+    checkLogin();
   }, []);
   return (
     <View style={styles.container}>

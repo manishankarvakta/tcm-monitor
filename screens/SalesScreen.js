@@ -1,4 +1,11 @@
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Icon, Input } from "react-native-elements";
 import SaleItem from "../Components/SaleItem";
@@ -59,13 +66,13 @@ const SalesScreen = ({ navigation }) => {
       <ScrollView>
         {sale?.length > 0 ? (
           sale?.map((item) => (
-            <SaleItem
-              item={item}
-              key={item._id}
+            <TouchableOpacity
               onPress={() => {
                 navigation.navigate("Invoice");
               }}
-            />
+            >
+              <SaleItem item={item} key={item._id} />
+            </TouchableOpacity>
           ))
         ) : (
           <Loading />
