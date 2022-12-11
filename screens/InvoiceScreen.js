@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { Icon } from "react-native-elements";
 
@@ -15,13 +15,15 @@ const InvoiceScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Icon
-        name="clockcircleo"
-        type="ant-design"
-        size={50}
-        style={{ marginBottom: 20 }}
-      />
-      <Text>Coming Soon</Text>
+      <ScrollView style={styles.InvoiceOuter}>
+        <Icon
+          name="clockcircleo"
+          type="ant-design"
+          size={50}
+          style={{ marginBottom: 20 }}
+        />
+        <Text>Coming Soon</Text>
+      </ScrollView>
     </View>
   );
 };
@@ -33,5 +35,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "white",
+  },
+  InvoiceOuter: {
+    padding: 10,
   },
 });

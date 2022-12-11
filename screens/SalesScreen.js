@@ -18,6 +18,8 @@ const SalesScreen = ({ navigation }) => {
   const baseUrl = "https://pos-api-v1-production.up.railway.app/api";
   const [input, setInput] = useState("");
   const [sale, setSale] = useState([]);
+  // const [startDate, setStartDate] = useState("12-10-2022");
+  // const [endDate, setEndDate] = useState("12-10-2022");
   const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
   const [endDate, setEndDate] = useState(format(new Date(), "MM-dd-yyyy"));
 
