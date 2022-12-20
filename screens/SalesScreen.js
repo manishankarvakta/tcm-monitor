@@ -11,7 +11,7 @@ import { Icon, Input } from "react-native-elements";
 import SaleItem from "../Components/SaleItem";
 import { startOfToday, endOfToday, format, formatDistance } from "date-fns";
 import axios from "axios";
-import { setStatusBarStyle } from "expo-status-bar";
+import { setStatusBarStyle, StatusBar } from "expo-status-bar";
 import Loading from "../Components/Loading";
 
 const SalesScreen = ({ navigation }) => {
@@ -25,7 +25,7 @@ const SalesScreen = ({ navigation }) => {
 
   const getSales = async () => {
     try {
-      console.log("getSale");
+      // console.log("getSale");
       await axios
         .get(`${baseUrl}/sale/byDate/${startDate}/${endDate}`)
         .then((res) => {
@@ -48,9 +48,10 @@ const SalesScreen = ({ navigation }) => {
       headerTintColor: "white",
     });
   }, [navigation]);
-  console.log("sale", sale.length);
+  // console.log("sale", sale.length);
   return (
     <View style={styles.container}>
+      <StatusBar style="dark" />
       <View style={styles.search}>
         <TextInput
           placeholder="Search Invoice"
@@ -60,15 +61,16 @@ const SalesScreen = ({ navigation }) => {
         <Icon name="search" type="feather" size={20} color="black" />
       </View>
       <View style={styles.thead}>
-        <Text style={[styles.th, { flex: 3 }]}>Invoice</Text>
+        <Text style={[styles.th, { flex: 2 }]}>Invoice</Text>
         <Text style={[styles.th, { flex: 1 }]}>Total</Text>
-        <Text style={[styles.th, { flex: 1 }]}>Time</Text>
-        <Text style={[styles.th, { flex: 0 }]}>View</Text>
+        <Text style={[styles.th, { flex: 1 }]}>Biller</Text>
+        <Text style={[styles.th, { flex: 0 }]}>Time</Text>
       </View>
       <ScrollView>
         {sale?.length > 0 ? (
           sale?.map((item) => (
             <TouchableOpacity
+              key={item._id}
               onPress={() => {
                 navigation.navigate("Invoice");
               }}

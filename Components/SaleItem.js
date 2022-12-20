@@ -19,14 +19,22 @@ const SaleItem = ({ item }) => {
       <Text style={[styles.td, { flex: 1, alignItems: "flex-start" }]}>
         {item.total ? item.total : 0} ৳
       </Text>
-      <Text style={[styles.td, { flex: 1, alignItems: "flex-end" }]}>
-        {item.createdAt && format(new Date(item.createdAt), "H:m a")}
+      <Text style={[styles.td, { flex: 0, alignItems: "flex-start" }]}>
+        {item.billerId.name.split(" ")[0]}
       </Text>
-      <TouchableOpacity
-        style={[styles.td, { flex: 0, alignItems: "flex-start" }]}
+      <Text
+        style={[
+          styles.td,
+          {
+            flex: 1,
+            alignItems: "flex-end",
+            fontWeight: "600",
+            marginLeft: 10,
+          },
+        ]}
       >
-        <Icon name="eye" type="font-awesome-5" size={15} color="black" />
-      </TouchableOpacity>
+        {item.createdAt && format(new Date(item.createdAt), "H:ma")}
+      </Text>
     </View>
   );
 };
