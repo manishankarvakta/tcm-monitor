@@ -112,8 +112,15 @@ const InvoiceScreen = ({ navigation }) => {
           <Text style={[styles.bin, { marginTop: 5 }]}>
             N.B: Sold products will not be returned after 24 hours
           </Text>
-          <Text style={styles.text}>Previous Point: 0 | New Point :0</Text>
-          <Text style={styles.text}>Previous Point: 0 | New Point :0</Text>
+          <Image
+            source={require("../assets/barCode.png")}
+            style={{ height: 80, width: 250 }}
+          />
+          <Text style={styles.text}>www.tcm-bd.com</Text>
+          <Text style={[styles.text, { fontWeight: "500" }]}>
+            Hot Line: 01316842636
+          </Text>
+          <Text style={styles.text}>Thank you for shopping with us</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
