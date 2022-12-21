@@ -72,7 +72,7 @@ const SalesScreen = ({ navigation }) => {
             <TouchableOpacity
               key={item._id}
               onPress={() => {
-                navigation.navigate("Invoice");
+                navigation.navigate("Invoice", { invoiceId: item._id });
               }}
             >
               <SaleItem item={item} key={item._id} />
