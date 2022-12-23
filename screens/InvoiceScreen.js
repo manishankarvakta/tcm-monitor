@@ -4,7 +4,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
 import React, { useEffect, useLayoutEffect, useState } from "react";
@@ -13,16 +12,16 @@ import { StatusBar } from "expo-status-bar";
 import Loading from "../Components/Loading";
 import axios from "axios";
 import { format } from "date-fns";
-import Barcode from "@kichiyaki/react-native-barcode-generator";
+import BASE_URL from "../utility/BaseUrl";
+// import Barcode from "@kichiyaki/react-native-barcode-generator";
 
 const InvoiceScreen = ({ navigation, route }) => {
-  const baseUrl = "https://pos-api-v1-production.up.railway.app/api";
   const { invoiceId } = route.params;
   const [bill, setBill] = useState({});
 
   const getBill = async () => {
     await axios
-      .get(`${baseUrl}/sale/${invoiceId}`)
+      .get(`${BASE_URL}/sale/${invoiceId}`)
       .then((res) => setBill(res.data));
   };
   console.log(invoiceId);
@@ -60,10 +59,10 @@ const InvoiceScreen = ({ navigation, route }) => {
         <Text style={{ flex: 1 }}>{item.qty}</Text>
         <Text style={{ flex: 1, textAlign: "center" }}>{item.mrp}</Text>
         <Text style={{ flex: 1, textAlign: "center" }}>
-          {vat(item.qty, item.vat, item.mrp)}
+          {vat(item?.qty, item?.vat, item?.mrp)?.toFixed(2)}
         </Text>
-        <Text style={{ flex: 1, textAlign: "center" }}>
-          {total(item.qty, item.mrp)?.toFixed(2)}
+        <Text style={{ flex: 1, textAlign: "right" }}>
+          {total(item?.qty, item?.mrp)?.toFixed(2)}
         </Text>
       </View>
     );
@@ -199,14 +198,14 @@ const InvoiceScreen = ({ navigation, route }) => {
           <Text style={[styles.bin, { marginTop: 5 }]}>
             N.B: Sold products will not be returned after 24 hours
           </Text>
-          <View>
+          {/* <View>
             <Barcode
               value={bill?.invoiceId ? bill?.invoiceId : "01700000000"}
               format="CODE128"
               height={40}
               style={{ padding: 10 }}
             />
-          </View>
+          </View> */}
           <Text style={styles.text}>www.tcm-bd.com</Text>
           <Text style={[styles.text, { fontWeight: "500" }]}>
             Hot Line: 01316842636

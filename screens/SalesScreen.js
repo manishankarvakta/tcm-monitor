@@ -13,9 +13,9 @@ import { startOfToday, endOfToday, format, formatDistance } from "date-fns";
 import axios from "axios";
 import { setStatusBarStyle, StatusBar } from "expo-status-bar";
 import Loading from "../Components/Loading";
+import BASE_URL from "../utility/BaseUrl";
 
 const SalesScreen = ({ navigation }) => {
-  const baseUrl = "https://pos-api-v1-production.up.railway.app/api";
   const [input, setInput] = useState("");
   const [sale, setSale] = useState([]);
   // const [startDate, setStartDate] = useState("12-10-2022");
@@ -27,7 +27,7 @@ const SalesScreen = ({ navigation }) => {
     try {
       // console.log("getSale");
       await axios
-        .get(`${baseUrl}/sale/byDate/${startDate}/${endDate}`)
+        .get(`${BASE_URL}/sale/byDate/${startDate}/${endDate}`)
         .then((res) => {
           setSale(res.data);
         });

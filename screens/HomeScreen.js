@@ -12,13 +12,13 @@ import { Avatar, Button } from "react-native-elements";
 import { Icon } from "react-native-elements";
 import { startOfToday, endOfToday, format, formatDistance } from "date-fns";
 import axios from "axios";
+import BASE_URL from "../utility/BaseUrl";
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState({});
 
   // DASHBOARD DATA
   // BASE URL
-  const baseUrl = "https://pos-api-v1-production.up.railway.app/api";
 
   // DATE INIT
   const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
@@ -31,7 +31,7 @@ const HomeScreen = ({ navigation }) => {
   const getData = async () => {
     try {
       await axios
-        .get(`${baseUrl}/sale/total/${startDate}/${endDate}`)
+        .get(`${BASE_URL}/sale/total/${startDate}/${endDate}`)
         .then((res) => {
           setSaleTotal(res?.data[0]);
         });
@@ -42,7 +42,7 @@ const HomeScreen = ({ navigation }) => {
   const getFootFall = async () => {
     try {
       await axios
-        .get(`${baseUrl}/sale/footfall/${startDate}/${endDate}`)
+        .get(`${BASE_URL}/sale/footfall/${startDate}/${endDate}`)
         .then((res) => {
           setFootFall(res?.data[0]?.footfall ? res?.data[0]?.footfall : 0);
         });
@@ -109,7 +109,7 @@ const HomeScreen = ({ navigation }) => {
               marginRight: 20,
               flexDirection: "row",
               justifyContent: "flex-end",
-              width: 100,
+              width: 120,
               marginRight: 10,
             }}
           >

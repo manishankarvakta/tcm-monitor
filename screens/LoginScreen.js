@@ -12,41 +12,46 @@ import { Icon } from "react-native-elements";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { StatusBar } from "expo-status-bar";
+import BASE_URL from "../utility/BaseUrl";
 
 const LoginScreen = ({ navigation }) => {
-  const baseUrl = "https://pos-api-v1-production.up.railway.app/api";
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [user, setUser] = useState({});
 
-  useEffect(() => {
-    getUser();
-    // if (user.id) {
-    //   navigation.replace("Home");
-    // }
-  }, []);
   console.log(user);
   const getUser = async () => {
-    console.log("getUser");
-    // const store = await AsyncStorage.getAllKeys();
+    // console.log("getUser");
+    const store = await AsyncStorage.getAllKeys();
     const userData = await AsyncStorage.getItem("user");
     setUser(JSON.parse(userData));
+
+    // console.log("Names", store);
   };
 
+  useEffect(() => {
+    getUser();
+    AsyncStorage.getItem("token").then((value) => {
+      if (value !== null) {
+        navigation.replace("Home");
+      }
+    });
+  }, []);
+
   const submitLogin = async () => {
-    console.log(email, pass);
+    // console.log(email, pass);
     // navigation.replace("Home");
 
     // AXIOS LOGIN REQUEST
     axios
-      .post(`${baseUrl}/user/login`, {
+      .post(`${BASE_URL}/user/login`, {
         email: email,
         password: pass,
       })
       .then(async (response) => {
-        console.log(response.status);
+        // console.log(response.status);
         if (response.status === 200) {
-          console.log(response.data.access_token);
+          // console.log(response.data.access_token);
 
           try {
             await AsyncStorage.setItem("token", response.data.access_token);
