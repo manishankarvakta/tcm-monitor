@@ -12,6 +12,7 @@
     "@expo/webpack-config": "^0.17.3",
     "@kichiyaki/react-native-barcode-generator": "^0.6.7",
     "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-native-community/datetimepicker": "6.5.2",
     "@react-navigation/native": "^6.0.16",
     "@react-navigation/stack": "^6.3.7",
     "@rneui/base": "^4.0.0-rc.7",

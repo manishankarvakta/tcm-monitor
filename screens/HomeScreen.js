@@ -13,9 +13,14 @@ import { Icon } from "react-native-elements";
 import { startOfToday, endOfToday, format, formatDistance } from "date-fns";
 import axios from "axios";
 import BASE_URL from "../utility/BaseUrl";
+// import DatePicker from "react-native-date-picker";
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState({});
+
+  // DATE PICKER
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
 
   // DASHBOARD DATA
   // BASE URL
@@ -64,7 +69,7 @@ const HomeScreen = ({ navigation }) => {
     setUser(JSON.parse(userData));
   };
 
-  // console.log("user", user);
+  console.log("date-picker", open);
   // console.log("sale", saleTotal);
   // console.log("footFall", footFall);
   const logOut = async () => {
@@ -113,6 +118,7 @@ const HomeScreen = ({ navigation }) => {
               marginRight: 10,
             }}
           >
+            {/* <TouchableOpacity onPress={() => setOpen(true)}> */}
             <Text
               style={{
                 marginRight: 10,
@@ -123,6 +129,10 @@ const HomeScreen = ({ navigation }) => {
             >
               {format(new Date(), "MM-dd-yyyy")}
             </Text>
+            {
+              // show && <DateTimePicker date={date} onDateChange={setDate}></DatePicker>
+            }
+            {/* </TouchableOpacity> */}
             <TouchableOpacity activeOpacity={0.5} onPress={() => logOut()}>
               <Icon name="poweroff" type="ant-design" size={20} />
             </TouchableOpacity>
@@ -369,6 +379,20 @@ const HomeScreen = ({ navigation }) => {
             ></Button>
           </TouchableOpacity>
         </View>
+        {/* <View>
+          <DatePicker
+            modal
+            open={open}
+            date={date}
+            onConfirm={(date) => {
+              setOpen(false);
+              setDate(date);
+            }}
+            onCancel={() => {
+              setOpen(false);
+            }}
+          />
+        </View> */}
       </ScrollView>
     </View>
   );

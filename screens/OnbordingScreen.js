@@ -39,8 +39,8 @@ const OnbordingScreen = ({ navigation }) => {
               source={require("../assets/report.png")}
             />
           ),
-          title: "Onboarding",
-          subtitle: "Done with React Native Onboarding Swiper",
+          title: "Today's Sale",
+          subtitle: "Anylitics of todays Sale",
         },
         {
           backgroundColor: "#ed3833",
@@ -50,8 +50,8 @@ const OnbordingScreen = ({ navigation }) => {
               source={require("../assets/list.png")}
             />
           ),
-          title: "Onboarding",
-          subtitle: "Done with React Native Onboarding Swiper",
+          title: "List Of Invoice",
+          subtitle: "List of todays sale invoice",
         },
         {
           backgroundColor: "#ed3833",
@@ -61,8 +61,8 @@ const OnbordingScreen = ({ navigation }) => {
               source={require("../assets/invoice.png")}
             />
           ),
-          title: "Onboarding",
-          subtitle: "Done with React Native Onboarding Swiper",
+          title: "Invoice Details",
+          subtitle: "View Details of Invoice",
         },
       ]}
     />

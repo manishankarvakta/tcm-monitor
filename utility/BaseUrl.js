@@ -1,3 +1,3 @@
-const BASE_URL = "https://pos-api-v1.onrender.com/api";
+const BASE_URL = "https://api.communitymagasin.com/api";
 
 export default BASE_URL;
