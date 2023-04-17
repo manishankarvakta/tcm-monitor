@@ -143,6 +143,25 @@ const InvoiceScreen = ({ navigation, route }) => {
             <Loading />
           )}
         </View>
+        <View style={{ marginBottom: 10 }}>
+          {bill?.returnProducts?.length > 0 ? (
+            bill.returnProducts?.map((item) => (
+              <>
+              <Text style={{ marginBottom: 10, fontWeight:"bold" }}>Return Product</Text>
+              <View
+                key={item.id}
+                onPress={() => {
+                  navigation.navigate("Invoice");
+                }}
+              >
+                <Item item={item} key={item.id} />
+              </View>
+              </>
+            ))
+          ) : (
+            <></>
+          )}
+        </View>
         <View style={styles.header}>
           <Text style={styles.text}>Total Item: </Text>
           <Text style={[styles.text, { fontWeight: "400" }]}>

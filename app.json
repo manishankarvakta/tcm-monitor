@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "TCM",
+    "name": "TCM sales Monitor",
     "slug": "tcm-monitor",
     "description": "This app for only monitoring TCM POS sales",
     "version": "1.0.0",
@@ -23,6 +23,7 @@
       "bundleIdentifier": "com.manishankarvakta.tcmmonitor"
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

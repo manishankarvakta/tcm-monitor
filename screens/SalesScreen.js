@@ -27,7 +27,7 @@ const SalesScreen = ({ navigation }) => {
     try {
       // console.log("getSale");
       await axios
-        .get(`${BASE_URL}/sale/byDate/${startDate}/${endDate}`)
+        .get(`${BASE_URL}/sale/byDate/${"04-17-2023"}/${endDate}`)
         .then((res) => {
           setSale(res.data);
         });

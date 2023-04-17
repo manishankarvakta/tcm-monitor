@@ -13,7 +13,7 @@ import { Icon } from "react-native-elements";
 import { startOfToday, endOfToday, format, formatDistance } from "date-fns";
 import axios from "axios";
 import BASE_URL from "../utility/BaseUrl";
-// import DatePicker from "react-native-date-picker";
+// import DatePicker from "react-natives-date-picker";
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState({});
@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
   // BASE URL
 
   // DATE INIT
-  const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
+  const [startDate, setStartDate] = useState("04-17-2023");
   const [endDate, setEndDate] = useState(format(new Date(), "MM-dd-yyyy"));
   const [saleTotal, setSaleTotal] = useState(0);
   const [footFall, setFootFall] = useState(0);
