@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
   // BASE URL
 
   // DATE INIT
-  const [startDate, setStartDate] = useState("04-17-2023");
+  const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
   const [endDate, setEndDate] = useState(format(new Date(), "MM-dd-yyyy"));
   const [saleTotal, setSaleTotal] = useState(0);
   const [footFall, setFootFall] = useState(0);
