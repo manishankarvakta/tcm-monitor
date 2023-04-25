@@ -27,10 +27,10 @@ const HomeScreen = ({ navigation }) => {
 
   // DATE INIT
   // DATE INIT
-  // const [endDate, setEndDate] = useState(format(new Date(), "MM-dd-yyyy"));
-  // const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
-  const [startDate, setStartDate] = useState("04-21-2023");
-  const [endDate, setEndDate] = useState("04-22-2023");
+  const [endDate, setEndDate] = useState(format(new Date(), "MM-dd-yyyy"));
+  const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
+  // const [startDate, setStartDate] = useState("04-21-2023");
+  // const [endDate, setEndDate] = useState("04-22-2023");
   const [saleTotal, setSaleTotal] = useState(0);
   const [footFall, setFootFall] = useState(0);
   const [busket, setBusket] = useState(0);

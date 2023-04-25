@@ -18,10 +18,10 @@ import BASE_URL from "../utility/BaseUrl";
 const SalesScreen = ({ navigation }) => {
   const [input, setInput] = useState("");
   const [sale, setSale] = useState([]);
-  // const [startDate, setStartDate] = useState("12-10-2022");
-  // const [endDate, setEndDate] = useState("12-10-2022");
-  const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
-  const [endDate, setEndDate] = useState(format(new Date(), "MM-dd-yyyy"));
+  const [startDate, setStartDate] = useState("12-10-2022");
+  const [endDate, setEndDate] = useState("12-10-2022");
+  // const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
+  // const [endDate, setEndDate] = useState(format(new Date(), "MM-dd-yyyy"));
 
   const getSales = async () => {
     try {
