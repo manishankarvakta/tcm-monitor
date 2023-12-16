@@ -33,9 +33,9 @@ const SaleItem = ({ item }) => {
           },
         ]}
       >
-        {/* {console.log(item.createdAt)} */}
-        {item?.createdAt &&
-          format(new Date(item?.createdAt?.split(" ")[0]), "H:ma")}
+        {item.createdAt}
+        {/* {item?.createdAt &&
+          format(new Date(item?.createdAt?.split(" ")[1]), "H:ma")} */}
       </Text>
     </View>
   );
