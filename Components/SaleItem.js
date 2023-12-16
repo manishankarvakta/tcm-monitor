@@ -20,7 +20,7 @@ const SaleItem = ({ item }) => {
         {item.total ? item.total : 0} ৳
       </Text>
       <Text style={[styles.td, { flex: 0, alignItems: "flex-start" }]}>
-        {item.billerId.name.split(" ")[0]}
+        {item?.billerName?.split(" ")[0]}
       </Text>
       <Text
         style={[
@@ -33,7 +33,9 @@ const SaleItem = ({ item }) => {
           },
         ]}
       >
-        {item.createdAt && format(new Date(item.createdAt), "H:ma")}
+        {/* {console.log(item.createdAt)} */}
+        {item?.createdAt &&
+          format(new Date(item?.createdAt?.split(" ")[0]), "H:ma")}
       </Text>
     </View>
   );

@@ -30,6 +30,7 @@ const SalesScreen = ({ navigation }) => {
         .get(`${BASE_URL}/sale/byDate/${startDate}/${endDate}`)
         .then((res) => {
           setSale(res.data);
+          console.log("sale:", res.data);
         });
     } catch (err) {
       console.log(err);

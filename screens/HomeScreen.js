@@ -97,7 +97,7 @@ const HomeScreen = ({ navigation }) => {
   useLayoutEffect(() => {
     getUser();
     navigation.setOptions({
-      title: "TCM-MONITOR",
+      title: "TCM-SALES-MONITOR",
       headerTitleAlign: "left",
       headerStyle: { backgroundColor: "#ed3833" },
       headerTitleStyle: { color: "white" },
