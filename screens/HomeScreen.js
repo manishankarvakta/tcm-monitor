@@ -41,28 +41,28 @@ const HomeScreen = ({ navigation }) => {
       await axios
         .get(`${BASE_URL}/sale/total/${startDate}/${endDate}`)
         .then((res) => {
-          console.log("SALE",res.data)
-          setSaleTotal(res?.data[0]);
+          // console.log("SALE", res.data);
+          setSaleTotal(res?.data);
         });
     } catch (err) {
       console.log(err);
     }
   };
-  const getFootFall = async () => {
-    try {
-      await axios
-        .get(`${BASE_URL}/sale/footfall/${startDate}/${endDate}`)
-        .then((res) => {
-          setFootFall(res?.data[0]?.footfall ? res?.data[0]?.footfall : 0);
-        });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getFootFall = async () => {
+  //   try {
+  //     await axios
+  //       .get(`${BASE_URL}/sale/footfall/${startDate}/${endDate}`)
+  //       .then((res) => {
+  //         setFootFall(res?.data[0]?.footfall ? res?.data[0]?.footfall : 0);
+  //       });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const refresh = () => {
     console.log("refresh");
-    getFootFall();
+    // getFootFall();
     getData();
   };
 
@@ -89,7 +89,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
-    getFootFall();
+    // getFootFall();
     getData();
     getUser();
   }, []);
@@ -97,7 +97,7 @@ const HomeScreen = ({ navigation }) => {
   useLayoutEffect(() => {
     getUser();
     navigation.setOptions({
-      title: "TCM",
+      title: "TCM-MONITOR",
       headerTitleAlign: "left",
       headerStyle: { backgroundColor: "#ed3833" },
       headerTitleStyle: { color: "white" },
@@ -216,9 +216,8 @@ const HomeScreen = ({ navigation }) => {
               }}
             >
               <Text style={{ fontSize: 40, fontWeight: "600", color: "white" }}>
-                {saleTotal?.grossTotalRound > 0
-                  ? saleTotal?.grossTotalRound
-                  : 0}
+                {/* {console.log("saleTotal", saleTotal)} */}
+                {saleTotal?.total > 0 ? saleTotal?.total : 0}
               </Text>
               <Text
                 style={{
@@ -260,7 +259,7 @@ const HomeScreen = ({ navigation }) => {
               }}
             >
               <Text style={{ fontSize: 40, fontWeight: "600", color: "black" }}>
-                {footFall}
+                {saleTotal?.count}
               </Text>
               <Text
                 style={{
@@ -303,8 +302,8 @@ const HomeScreen = ({ navigation }) => {
               }}
             >
               <Text style={{ fontSize: 40, fontWeight: "600", color: "black" }}>
-                {saleTotal?.total / footFall > 0
-                  ? (saleTotal.total / footFall)?.toFixed(2)
+                {saleTotal?.total / saleTotal?.count > 0
+                  ? (saleTotal.total / saleTotal?.count)?.toFixed(2)
                   : 0}
               </Text>
               <Text

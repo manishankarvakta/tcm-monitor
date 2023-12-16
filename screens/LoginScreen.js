@@ -39,7 +39,7 @@ const LoginScreen = ({ navigation }) => {
   }, []);
 
   const submitLogin = async () => {
-    // console.log(email, pass);
+    console.log(email, pass);
     // navigation.replace("Home");
 
     // AXIOS LOGIN REQUEST
