@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/6eee0a27-f675-40ff-8d94-559bf1aa1c6d"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -38,6 +39,9 @@
         "projectId": "6eee0a27-f675-40ff-8d94-559bf1aa1c6d"
       }
     },
-    "owner": "manishankarvakta"
+    "owner": "manishankarvakta",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   }
 }
