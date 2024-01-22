@@ -24,13 +24,13 @@ const InvoiceScreen = ({ navigation, route }) => {
       .get(`${BASE_URL}/sale/${invoiceId}`)
       .then((res) => setBill(res.data));
   };
-  console.log(invoiceId);
+  // console.log(invoiceId);
 
   useEffect(() => {
     getBill();
   }, []);
 
-  console.log(bill);
+  // console.log(bill);
 
   const products = [];
   useLayoutEffect(() => {
@@ -147,15 +147,17 @@ const InvoiceScreen = ({ navigation, route }) => {
           {bill?.returnProducts?.length > 0 ? (
             bill.returnProducts?.map((item) => (
               <>
-              <Text style={{ marginBottom: 10, fontWeight:"bold" }}>Return Product</Text>
-              <View
-                key={item.id}
-                onPress={() => {
-                  navigation.navigate("Invoice");
-                }}
-              >
-                <Item item={item} key={item.id} />
-              </View>
+                <Text style={{ marginBottom: 10, fontWeight: "bold" }}>
+                  Return Product
+                </Text>
+                <View
+                  key={item.id}
+                  onPress={() => {
+                    navigation.navigate("Invoice");
+                  }}
+                >
+                  <Item item={item} key={item.id} />
+                </View>
               </>
             ))
           ) : (

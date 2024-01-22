@@ -73,7 +73,7 @@ const HomeScreen = ({ navigation }) => {
     setUser(JSON.parse(userData));
   };
 
-  console.log("date-picker", open);
+  // console.log("date-picker", open);
   // console.log("sale", saleTotal);
   // console.log("footFall", footFall);
   const logOut = async () => {

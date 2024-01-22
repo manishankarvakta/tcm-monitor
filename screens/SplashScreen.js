@@ -19,7 +19,7 @@ const SplashScreen = ({ navigation }) => {
 
   const checkLogin = async () => {
     const token = await AsyncStorage.getItem("token");
-    console.log(token);
+    // console.log(token);
     setTimeout(() => {
       if (token == null) {
         navigation.replace("Login");
@@ -28,7 +28,7 @@ const SplashScreen = ({ navigation }) => {
       }
     }, 3000);
   };
-  console.log("isLogin", isLoggedIn);
+  // console.log("isLogin", isLoggedIn);
   useEffect(() => {
     checkLogin();
   }, []);

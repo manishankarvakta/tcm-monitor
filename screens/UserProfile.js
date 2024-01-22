@@ -12,7 +12,7 @@ import { Avatar, Icon, Image } from "react-native-elements";
 const UserProfile = () => {
   const [user, setUser] = useState({});
   const getUser = async () => {
-    console.log("getUser");
+    // console.log("getUser");
     // const store = await AsyncStorage.getAllKeys();
     const userData = await AsyncStorage.getItem("user");
     setUser(JSON.parse(userData));
@@ -21,7 +21,7 @@ const UserProfile = () => {
     getUser();
   }, []);
 
-  console.log(user);
+  // console.log(user);
   return (
     <View style={styles.container}>
       <View style={styles.title}>

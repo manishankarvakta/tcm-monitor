@@ -9,32 +9,32 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/webpack-config": "^0.17.3",
+    "@expo/webpack-config": "~19.0.1",
     "@kichiyaki/react-native-barcode-generator": "^0.6.7",
-    "@react-native-async-storage/async-storage": "~1.17.3",
-    "@react-native-community/datetimepicker": "6.5.2",
+    "@react-native-async-storage/async-storage": "1.21.0",
+    "@react-native-community/datetimepicker": "7.6.1",
     "@react-navigation/native": "^6.0.16",
     "@react-navigation/stack": "^6.3.7",
     "@rneui/base": "^4.0.0-rc.7",
     "@rneui/themed": "^4.0.0-rc.7",
     "axios": "^1.2.1",
     "date-fns": "^2.29.3",
-    "expo": "~47.0.8",
-    "expo-status-bar": "~1.4.2",
-    "expo-updates": "~0.15.6",
-    "react": "18.1.0",
-    "react-native": "0.70.5",
+    "expo": "^50.0.0",
+    "expo-status-bar": "~1.11.1",
+    "expo-updates": "~0.24.8",
+    "react": "18.2.0",
+    "react-native": "0.73.2",
     "react-native-axios": "^0.17.1",
     "react-native-elements": "^3.4.2",
     "react-native-onboarding-swiper": "^1.2.0",
-    "react-native-safe-area-context": "^4.4.1",
+    "react-native-safe-area-context": "4.8.2",
     "react-native-safe-area-view": "^1.1.1",
-    "react-native-svg": "^13.6.0",
+    "react-native-svg": "14.1.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-web": "^0.18.10"
+    "react-native-web": "~0.19.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.20.0"
   },
   "private": true
 }

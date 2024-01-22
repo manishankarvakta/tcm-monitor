@@ -39,7 +39,7 @@ const LoginScreen = ({ navigation }) => {
   }, []);
 
   const submitLogin = async () => {
-    console.log(email, pass);
+    // console.log(email, pass);
     // navigation.replace("Home");
 
     // AXIOS LOGIN REQUEST
@@ -62,7 +62,7 @@ const LoginScreen = ({ navigation }) => {
           } catch (error) {
             console.log("storeError:", error);
           } finally {
-            console.log("Login Success");
+            // console.log("Login Success");
             navigation.replace("Home");
           }
         }
