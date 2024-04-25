@@ -18,8 +18,8 @@ import BASE_URL from "../utility/BaseUrl";
 const SalesScreen = ({ navigation }) => {
   const [input, setInput] = useState("");
   const [sale, setSale] = useState([]);
-  const [startDate, setStartDate] = useState("12-10-2022");
-  const [endDate, setEndDate] = useState("12-10-2022");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   // const [startDate, setStartDate] = useState(format(new Date(), "MM-dd-yyyy"));
   // const [endDate, setEndDate] = useState(format(new Date(), "MM-dd-yyyy"));
 
@@ -30,7 +30,7 @@ const SalesScreen = ({ navigation }) => {
         .get(`${BASE_URL}/sale/byDate/${startDate}/${endDate}`)
         .then((res) => {
           setSale(res.data);
-          console.log("sale:", res.data.length);
+          console.log("sale:", res.data);
         });
     } catch (err) {
       console.log(err);

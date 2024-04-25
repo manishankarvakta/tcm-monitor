@@ -17,7 +17,7 @@ const SaleItem = ({ item }) => {
         {item.invoiceId}
       </Text>
       <Text style={[styles.td, { flex: 1, alignItems: "flex-start" }]}>
-        {item.total ? item.total : 0} ৳
+        {item.roundedGrossTotal ? item.roundedGrossTotal : 0} ৳
       </Text>
       <Text style={[styles.td, { flex: 0, alignItems: "flex-start" }]}>
         {item?.billerName?.split(" ")[0]}

@@ -37,15 +37,19 @@ const HomeScreen = ({ navigation }) => {
 
   // GET INFO
   const getData = async () => {
+    // console.log(
+    //   "console",
+    //   `${BASE_URL}/sale/dashboardSale/${startDate}/${endDate}`
+    // );
     try {
       await axios
-        .get(`${BASE_URL}/sale/total/${startDate}/${endDate}`)
+        .get(`${BASE_URL}/sale/dashboardSale/${startDate}/${endDate}`)
         .then((res) => {
-          // console.log("SALE", res.data);
+          console.log("SALE", res.data);
           setSaleTotal(res?.data);
         });
     } catch (err) {
-      console.log(err);
+      console.log("Total", err);
     }
   };
   // const getFootFall = async () => {
@@ -217,7 +221,9 @@ const HomeScreen = ({ navigation }) => {
             >
               <Text style={{ fontSize: 40, fontWeight: "600", color: "white" }}>
                 {/* {console.log("saleTotal", saleTotal)} */}
-                {saleTotal?.total > 0 ? saleTotal?.total : 0}
+                {saleTotal?.roundedGrossTotal > 0
+                  ? saleTotal?.roundedGrossTotal
+                  : 0}
               </Text>
               <Text
                 style={{
@@ -259,7 +265,7 @@ const HomeScreen = ({ navigation }) => {
               }}
             >
               <Text style={{ fontSize: 40, fontWeight: "600", color: "black" }}>
-                {saleTotal?.count}
+                {saleTotal?.footfall}
               </Text>
               <Text
                 style={{
@@ -302,8 +308,10 @@ const HomeScreen = ({ navigation }) => {
               }}
             >
               <Text style={{ fontSize: 40, fontWeight: "600", color: "black" }}>
-                {saleTotal?.total / saleTotal?.count > 0
-                  ? (saleTotal.total / saleTotal?.count)?.toFixed(2)
+                {saleTotal?.roundedGrossTotal / saleTotal?.footfall > 0
+                  ? (
+                      saleTotal.roundedGrossTotal / saleTotal?.footfall
+                    )?.toFixed(2)
                   : 0}
               </Text>
               <Text
