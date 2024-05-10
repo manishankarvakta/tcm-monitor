@@ -3,7 +3,8 @@
     "name": "TCM sales Monitor",
     "slug": "tcm-monitor",
     "description": "This app for only monitoring TCM POS sales",
-    "version": "1.0.0",
+    "version": "1.1.0",
+    "sdkVersion": "51.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -16,9 +17,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/6eee0a27-f675-40ff-8d94-559bf1aa1c6d"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.manishankarvakta.tcmmonitor"
